@@ -64,7 +64,7 @@
                 .then(data => {
 
                     document.getElementById("result").textContent =
-                        "API 请求成功！";
+                        JSON.stringify(data, null, 2);
 
                     console.log(data);
 
