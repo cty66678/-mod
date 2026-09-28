@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>API测试</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 80px;
+            background: #f2f2f2;
+        }
+
+        .box {
+            max-width: 600px;
+            margin: auto;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 15px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>API 测试</h1>
+
+        <p>点击下面的按钮获取数据</p>
+
+        <button onclick="getData()">
+            获取数据
+        </button>
+
+        <div id="result">
+            等待请求……
+        </div>
+
+    </div>
+
+    <script>
+
+        function getData() {
+
+            document.getElementById("result").textContent = "正在请求 API……";
+
+            fetch("https://api.github.com")
+                .then(response => response.json())
+                .then(data => {
+
+                    document.getElementById("result").textContent =
+                        "API 请求成功！";
+
+                    console.log(data);
+
+                })
+                .catch(error => {
+
+                    document.getElementById("result").textContent =
+                        "请求失败：" + error;
+
+                });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
